@@ -37,6 +37,24 @@ export default function App() {
               </RequireAuth>
             }
           />
+          <Route path="test">
+            <Route
+              path="1"
+              element={
+                <RequireAuth>
+                  <ProtectedPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="2"
+              element={
+                <RequireAuth>
+                  <ProtectedPage2 />
+                </RequireAuth>
+              }
+            />
+          </Route>
         </Route>
       </Routes>
     </AuthProvider>
@@ -53,6 +71,9 @@ function Layout() {
         </li>
         <li>
           <Link to="/protected/1">Protected Page1</Link> | <Link to="/protected/2">Page 2</Link>
+        </li>
+        <li>
+          <Link to="/test/1">Test Page1</Link> | <Link to="/test/2">Page 2</Link>
         </li>
       </ul>
       <Outlet />
@@ -176,18 +197,23 @@ function PublicPage() {
 }
 
 function ProtectedPage() {
-  return <h3>Protected</h3>;
+  return (
+    <>
+      <h3>Protected</h3>
+      <p>
+        Innovare conatus est, non mollis pertinacia sensus. Dux virtus percipit, mentis fortitudo resistit. Ideoque
+        invenire necesse est, ut aperiam perspicuitatem.
+      </p>
+    </>
+  );
 }
 function ProtectedPage2() {
   return (
     <>
       <h3>Protected 2</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
+        Innovation ist der Versuch, nicht schwache Durchhaltevermögen. Der Führer versteht Tugend, der Mut des Geistes
+        widersteht. Daher muss man Klarheit finden.
       </p>
     </>
   );
