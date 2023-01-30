@@ -25,7 +25,7 @@ export default function App() {
             path="protected/1"
             element={
               <RequireAuth>
-                <ProtectedPage />
+                <ProtectedPage1 />
               </RequireAuth>
             }
           />
@@ -37,23 +37,16 @@ export default function App() {
               </RequireAuth>
             }
           />
-          <Route path="test">
-            <Route
-              path="1"
-              element={
-                <RequireAuth>
-                  <ProtectedPage />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="2"
-              element={
-                <RequireAuth>
-                  <ProtectedPage2 />
-                </RequireAuth>
-              }
-            />
+          <Route
+            path="test"
+            element={
+              <RequireAuth>
+                <Outlet />
+              </RequireAuth>
+            }
+          >
+            <Route path="1" element={<ProtectedPage1 />} />
+            <Route path="2" element={<ProtectedPage2 />} />
           </Route>
         </Route>
       </Routes>
@@ -196,7 +189,7 @@ function PublicPage() {
   return <h3>Public</h3>;
 }
 
-function ProtectedPage() {
+function ProtectedPage1() {
   return (
     <>
       <h3>Protected</h3>
