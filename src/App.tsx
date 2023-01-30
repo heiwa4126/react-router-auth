@@ -29,6 +29,14 @@ export default function App() {
               </RequireAuth>
             }
           />
+          <Route
+            path="/protected2"
+            element={
+              <RequireAuth>
+                <ProtectedPage2 />
+              </RequireAuth>
+            }
+          />
         </Route>
       </Routes>
     </AuthProvider>
@@ -39,7 +47,6 @@ function Layout() {
   return (
     <div>
       <AuthStatus />
-
       <ul>
         <li>
           <Link to="/">Public Page</Link>
@@ -47,8 +54,10 @@ function Layout() {
         <li>
           <Link to="/protected">Protected Page</Link>
         </li>
+        <li>
+          <Link to="/protected2">Protected Page 2</Link>
+        </li>
       </ul>
-
       <Outlet />
     </div>
   );
@@ -139,12 +148,14 @@ function LoginPage() {
     let username = formData.get("username") as string;
 
     auth.signin(username, () => {
-      // Send them back to the page they tried to visit when they were
-      // redirected to the login page. Use { replace: true } so we don't create
-      // another entry in the history stack for the login page.  This means that
-      // when they get to the protected page and click the back button, they
-      // won't end up back on the login page, which is also really nice for the
-      // user experience.
+      // ログインページにリダイレクトされた際に閲覧しようとしたページに戻させる
+      // ログインページにリダイレクトされたときに訪問しようとしたページに送り返します。
+      // { replace: true } を使用して、ログインページの履歴スタックに別のエントリを作成しないようにします。
+      // ログインページの履歴スタックに別のエントリを作成しないようにします。 これは、次のことを意味します。
+      // 保護されたページが表示され、戻るボタンをクリックしたときに
+      // ログインページに戻ってくることはありません。
+      // ユーザーエクスペリエンスにとって非常に良いことです。
+
       navigate(from, { replace: true });
     });
   }
@@ -169,4 +180,18 @@ function PublicPage() {
 
 function ProtectedPage() {
   return <h3>Protected</h3>;
+}
+function ProtectedPage2() {
+  return (
+    <>
+      <h3>Protected 2</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.
+      </p>
+    </>
+  );
 }
