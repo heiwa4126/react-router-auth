@@ -22,7 +22,7 @@ export default function App() {
           <Route index element={<PublicPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route
-            path="protected"
+            path="protected/1"
             element={
               <RequireAuth>
                 <ProtectedPage />
@@ -30,7 +30,7 @@ export default function App() {
             }
           />
           <Route
-            path="protected2"
+            path="protected/2"
             element={
               <RequireAuth>
                 <ProtectedPage2 />
@@ -52,10 +52,7 @@ function Layout() {
           <Link to="/">Public Page</Link>
         </li>
         <li>
-          <Link to="/protected">Protected Page</Link>
-        </li>
-        <li>
-          <Link to="/protected2">Protected Page 2</Link>
+          <Link to="/protected/1">Protected Page1</Link> | <Link to="/protected/2">Page 2</Link>
         </li>
       </ul>
       <Outlet />
