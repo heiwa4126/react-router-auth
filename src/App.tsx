@@ -19,10 +19,10 @@ export default function App() {
 
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<PublicPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route index element={<PublicPage />} />
+          <Route path="login" element={<LoginPage />} />
           <Route
-            path="/protected"
+            path="protected"
             element={
               <RequireAuth>
                 <ProtectedPage />
@@ -30,7 +30,7 @@ export default function App() {
             }
           />
           <Route
-            path="/protected2"
+            path="protected2"
             element={
               <RequireAuth>
                 <ProtectedPage2 />
