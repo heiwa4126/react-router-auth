@@ -1,21 +1,12 @@
-*.css text eol=lf
-*.html text eol=lf
-*.htm text eol=lf
-*.json text eol=lf
-*.yaml text eol=lf
-*.yml text eol=lf
-*.js text eol=lf
-*.ts text eol=lf
-*.mjs text eol=lf
-*.cjs text eol=lf
-*.tsx text eol=lf
-*.jsx text eol=lf
-*.md text eol=lf
-*.txt text eol=lf
-*.tf text eol=lf
-*.tfvars* text eol=lf
-.gitignore text eol=lf
-.gitattributes text eol=lf
-*.hcl text eol=lf
-*.bat text eol=crlf
-*.cmd text eol=crlf
+* text=auto eol=lf
+*.cmd text eol=crlf working-tree-encoding=SHIFT-JIS
+*.bat text eol=crlf working-tree-encoding=SHIFT-JIS
+*.reg text eol=crlf working-tree-encoding=UTF-16LE-BOM
+*.lockb binary diff=lockb
+
+*.ipynb filter=nbstripout
+*.zpln filter=nbstripout
+*.ipynb	diff=jupyternotebook
+*.ipynb	merge=jupyternotebook
+
+*.ipynb diff=ipynb
